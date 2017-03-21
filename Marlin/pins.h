@@ -98,7 +98,7 @@
 
 /****************************************************************************************
 * Leapfrog Driver board
-* 
+*
 ****************************************************************************************/
 #if MB(LEAPFROG)  // Leapfrog board
 #define KNOWN_BOARD 1
@@ -147,14 +147,14 @@
 #define SDSS               11
 #define SDCARDDETECT       -1 // 10 optional also used as mode pin
 #define LED_PIN            13
-#define FAN_PIN            7
+#define FAN_PIN             7
 #define PS_ON_PIN          -1
 #define KILL_PIN           -1
-#define SOL1_PIN   16
-#define SOL2_PIN    17
+#define SOL1_PIN           16
+#define SOL2_PIN           17
 
-#define HEATER_0_PIN       9
-#define HEATER_1_PIN       8 // 12
+#define HEATER_0_PIN        9
+#define HEATER_1_PIN        8 // 12
 #define HEATER_2_PIN       11 //-1 // 13
 #define TEMP_0_PIN         13 //D27   // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!!
 #define TEMP_1_PIN         15 // 1
@@ -174,24 +174,24 @@
 #if MB(99)
 #define KNOWN_BOARD 1
 
-#define X_STEP_PIN          2
-#define X_DIR_PIN           3
+#define X_STEP_PIN           2
+#define X_DIR_PIN            3
 #define X_ENABLE_PIN        -1
 #define X_STOP_PIN          16
 
-#define Y_STEP_PIN          5
-#define Y_DIR_PIN           6
-#define Y_ENABLE_PIN       -1
+#define Y_STEP_PIN           5
+#define Y_DIR_PIN            6
+#define Y_ENABLE_PIN        -1
 #define Y_STOP_PIN          67
 
 #define Z_STEP_PIN          62
 #define Z_DIR_PIN           63
-#define Z_ENABLE_PIN       -1
+#define Z_ENABLE_PIN        -1
 #define Z_STOP_PIN          59
 
 #define E0_STEP_PIN         65
 #define E0_DIR_PIN          66
-#define E0_ENABLE_PIN      -1
+#define E0_ENABLE_PIN       -1
 
 #define SDPOWER            -1
 #define SDSS               53
@@ -200,7 +200,7 @@
 #define PS_ON_PIN           9
 #define KILL_PIN           -1
 
-#define HEATER_0_PIN        13
+#define HEATER_0_PIN       13
 #define HEATER_1_PIN       -1
 #define HEATER_2_PIN       -1
 #define TEMP_0_PIN          6   // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!!
@@ -463,34 +463,34 @@
     #define X_STEP_PIN      21                  // different from standard GEN7
     #define X_DIR_PIN       20                  // different from standard GEN7
     #define X_ENABLE_PIN    24
-    #define X_STOP_PIN      0
+    #define X_STOP_PIN       0
 
     //y axis pins
     #define Y_STEP_PIN      23
     #define Y_DIR_PIN       22
     #define Y_ENABLE_PIN    24
-    #define Y_STOP_PIN      1
+    #define Y_STOP_PIN       1
 
     //z axis pins
     #define Z_STEP_PIN      26
     #define Z_DIR_PIN       25
     #define Z_ENABLE_PIN    24
-    #define Z_STOP_PIN      2
+    #define Z_STOP_PIN       2
 
     //extruder pins
     #define E0_STEP_PIN      28
     #define E0_DIR_PIN       27
     #define E0_ENABLE_PIN    24
 
-    #define TEMP_0_PIN      2
+    #define TEMP_0_PIN       2
     #define TEMP_1_PIN      -1
     #define TEMP_2_PIN      -1
-    #define TEMP_BED_PIN        1   // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!! (pin 34 bed)
+    #define TEMP_BED_PIN     1   // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!! (pin 34 bed)
 
-    #define HEATER_0_PIN    4
+    #define HEATER_0_PIN     4
     #define HEATER_1_PIN    -1
     #define HEATER_2_PIN    -1
-    #define HEATER_BED_PIN      3  // (bed)
+    #define HEATER_BED_PIN   3  // (bed)
 
     #define SDPOWER         -1
     #define SDSS            31                  // SCL pin of I2C header || CS Pin for SD Card support
@@ -500,7 +500,7 @@
     #define PS_ON_PIN       19
     //our pin for debugging.
 
-    #define DEBUG_PIN        -1
+    #define DEBUG_PIN       -1
 
     //our RS485 pins
     //#define TX_ENABLE_PIN       12
@@ -540,22 +540,157 @@
  #endif
 #endif
 
+#if MB(RAMPS_OLD) // MEGA/RAMPS up to 1.2
+  // RAMPS_V_1_0 && RAMPS_V_1_1
+    #define X_STEP_PIN         26
+    #define X_DIR_PIN          28
+    #define X_ENABLE_PIN       24
+    #define X_MIN_PIN           3
+    #define X_MAX_PIN          -1 //// 2
 
-// uncomment one of the following lines for RAMPS v1.3 or v1.0, comment both for v1.2 or 1.1
-// #define RAMPS_V_1_3
-// #define RAMPS_V_1_0
+    #define Y_STEP_PIN         38
+    #define Y_DIR_PIN          40
+    #define Y_ENABLE_PIN       36
+    #define Y_MIN_PIN          16
+    #define Y_MAX_PIN          -1  // 17
 
+    #define Z_STEP_PIN         44
+    #define Z_DIR_PIN          46
+    #define Z_ENABLE_PIN       42
+    #define Z_MIN_PIN          18
+    #define Z_MAX_PIN          -1  // 19
 
-#if (IS_RAMPS && !MB(RAMPS_OLD)) || MB(3DRAG) || MB(AZTEEG_X3) || MB(AZTEEG_X3_PRO)
+    #define E0_STEP_PIN         32
+    #define E0_DIR_PIN          34
+    #define E0_ENABLE_PIN       30
 
-  #define LARGE_FLASH true
+    #define SDPOWER            48
+    #define SDSS               53
+    #define LED_PIN            13
+    #define PS_ON_PIN          -1
+    #define KILL_PIN           -1
 
-  #if MB(3DRAG)
+    #ifdef RAMPS_V_1_0 // RAMPS_V_1_0
+      #define HEATER_0_PIN     12    // RAMPS 1.0
+      #define HEATER_BED_PIN   -1    // RAMPS 1.0
+      #define FAN_PIN          11    // RAMPS 1.0
+    #else // RAMPS_V_1_1 or RAMPS_V_1_2
+      #define HEATER_0_PIN     10    // RAMPS 1.1
+      #define HEATER_BED_PIN    8    // RAMPS 1.1
+      #define FAN_PIN           9    // RAMPS 1.1
+    #endif
+
+    #define HEATER_1_PIN        -1
+    #define HEATER_2_PIN        -1
+    #define TEMP_0_PIN           2    // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!!
+    #define TEMP_1_PIN          -1
+    #define TEMP_2_PIN          -1
+    #define TEMP_BED_PIN         1    // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!!
+
+#elif MB(RAMPS_13_EFB) // RAMPS 1.3 (Power outputs: Hotend, Fan, Bed)
+  // uncomment one of the following lines for RAMPS v1.3 or v1.0, comment both for v1.2 or 1.1
+  // #define RAMPS_V_1_3 && RAMPS_V_1_4
+
+    #define LARGE_FLASH true
+
     #define X_STEP_PIN         54
     #define X_DIR_PIN          55
     #define X_ENABLE_PIN       38
     #define X_MIN_PIN           3
-    #define X_MAX_PIN           -1   //2 //Max endstops default to disabled "-1", set to commented value to enable.
+    #define X_MAX_PIN          -1 ///2
+
+    #define Y_STEP_PIN         60
+    #define Y_DIR_PIN          61
+    #define Y_ENABLE_PIN       56
+    #define Y_MIN_PIN          14
+    #define Y_MAX_PIN          -1 ///15
+
+    #define Z_STEP_PIN         46
+    #define Z_DIR_PIN          48
+    #define Z_ENABLE_PIN       62
+    #define Z_MIN_PIN          18
+    #define Z_MAX_PIN          -1 ///19
+
+    #define Y2_STEP_PIN        -1 //36
+    #define Y2_DIR_PIN         -1 //34
+    #define Y2_ENABLE_PIN      -1 //30
+
+    #define Z2_STEP_PIN        -1 //36
+    #define Z2_DIR_PIN         -1 //34
+    #define Z2_ENABLE_PIN      -1 //30
+
+    #define E0_STEP_PIN        26
+    #define E0_DIR_PIN         28
+    #define E0_ENABLE_PIN      24
+
+    #define E1_STEP_PIN        36
+    #define E1_DIR_PIN         34
+    #define E1_ENABLE_PIN      30
+
+    #define SDPOWER            -1
+    #define SDSS               53
+    #define LED_PIN            13
+
+    #define FAN_PIN            9 // (Sprinter config)
+    #define FAN2_PIN           6
+    #define PS_ON_PIN         -1//12
+
+    #define KILL_PIN           37
+    #define KILL_PIN_LOW       35
+
+
+    #define HEATER_BED_PIN      8    // BED
+    #define HEATER_0_PIN       10   // EXTRUDER 0
+    #define HEATER_1_PIN       -1    //7// EXTRUDER 1
+    #define HEATER_2_PIN       -1
+
+    #define TEMP_BED_PIN       14   // ANALOG NUMBERING
+    #define TEMP_0_PIN         13   // ANALOG NUMBERING
+    #define TEMP_1_PIN         15   // ANALOG NUMBERING
+    #define TEMP_2_PIN         -1   // ANALOG NUMBERING
+
+
+    #ifdef NUM_SERVOS
+    #define SERVO0_PIN          4
+    #if NUM_SERVOS > 1
+          #define SERVO1_PIN    5
+    #endif
+    #if NUM_SERVOS > 2
+          #define SERVO2_PIN    6
+    #endif
+    #if NUM_SERVOS > 3
+          #define SERVO3_PIN   11
+    #endif
+    #endif//NUM_SERVOS
+
+    #ifdef ULTRA_LCD
+        #ifdef NEWPANEL
+          #define LCD_PINS_RS         16
+          #define LCD_PINS_ENABLE     17
+          #define LCD_PINS_D4         23
+          #define LCD_PINS_D5         25
+          #define LCD_PINS_D6         27
+          #define LCD_PINS_D7         29
+    #ifdef REPRAP_DISCOUNT_SMART_CONTROLLER
+          #define BEEPER              37
+          #define BTN_EN1             33
+          #define BTN_EN2             31
+          #define BTN_ENC             35
+          #define SDCARDDETECT        49
+    #endif
+      #endif //NEWPANEL
+    #endif //ULTRA_LCD
+
+#elif (IS_RAMPS && !MB(RAMPS_OLD) && !MB(RAMPS_13_EFB)) || MB(3DRAG) || MB(AZTEEG_X3) || MB(AZTEEG_X3_PRO)
+
+  #define LARGE_FLASH true
+
+  #if MB(3DRAG)
+    #define X_STEP_PIN          54
+    #define X_DIR_PIN           55
+    #define X_ENABLE_PIN        38
+    #define X_MIN_PIN            3
+    #define X_MAX_PIN           -1   ///2 ///Max endstops default to disabled "-1", set to commented value to enable.
 
     #define Y_STEP_PIN         60
     #define Y_DIR_PIN          61
@@ -591,25 +726,25 @@
 
     #define BEEPER             33
 
-  #else
+  #else //MB(3DRAG) == false, MB is not 3DRAG
 
     #define X_STEP_PIN         54
     #define X_DIR_PIN          55
     #define X_ENABLE_PIN       38
     #define X_MIN_PIN           3
-    #define X_MAX_PIN           2
+    #define X_MAX_PIN          -1///2
 
     #define Y_STEP_PIN         60
     #define Y_DIR_PIN          61
     #define Y_ENABLE_PIN       56
     #define Y_MIN_PIN          14
-    #define Y_MAX_PIN          15
+    #define Y_MAX_PIN          -1///15
 
     #define Z_STEP_PIN         46
     #define Z_DIR_PIN          48
     #define Z_ENABLE_PIN       62
     #define Z_MIN_PIN          18
-    #define Z_MAX_PIN          19
+    #define Z_MAX_PIN          -1///19
 
     #define Y2_STEP_PIN        36
     #define Y2_DIR_PIN         34
@@ -633,7 +768,7 @@
     //Use the RAMPS 1.4 Analog input 5 on the AUX2 connector
       #define FILWIDTH_PIN        5
 #endif
-#endif
+#endif //MB(3DRAG)
 
 
     #if MB(AZTEEG_X3_PRO)
@@ -655,10 +790,12 @@
     #define LED_PIN            13
   #endif
 
-  #if MB(RAMPS_13_EFB) || MB(RAMPS_13_EFF) || MB(AZTEEG_X3)
+  #if MB(RAMPS_13_EFF) || MB(AZTEEG_X3)
     #define FAN_PIN            9 // (Sprinter config)
+    #define FAN2_PIN           6 // (Sprinter config)
   #elif MB(AZTEEG_X3_PRO)
-    #define FAN_PIN            11 // Last Heater Pin on board
+    #define FAN_PIN           11 // Last Heater Pin on board
+    #define FAN2_PIN           6 // (Sprinter config)
   #else
     #define FAN_PIN            4 // IO pin. Buffer needed
   #endif
@@ -671,7 +808,7 @@
     #define CONTROLLERFAN_PIN  -1 //Pin used for the fan to cool controller
   #endif
 
-  #define PS_ON_PIN          12
+  #define PS_ON_PIN          -1//12
 
   #if defined(REPRAP_DISCOUNT_SMART_CONTROLLER) || defined(G3D_PANEL)
     #define KILL_PIN           41
@@ -680,28 +817,28 @@
   #endif
 
   #if MB(RAMPS_13_EFF)
-    #define HEATER_0_PIN       8
+    #define HEATER_0_PIN        8
   #else
     #define HEATER_0_PIN       10   // EXTRUDER 1
   #endif
 
-  #if MB(RAMPS_13_EFB) || MB(AZTEEG_X3)
+  #if MB(AZTEEG_X3)
     #define HEATER_1_PIN       -1
   #else
-    #define HEATER_1_PIN       9    // EXTRUDER 2 (FAN On Sprinter)
+    #define HEATER_1_PIN        9    // EXTRUDER 2 (FAN On Sprinter)
   #endif
 
 
   #if MB(3DRAG)
     #define HEATER_0_PIN       10
     #define HEATER_1_PIN       12
-    #define HEATER_2_PIN       6
+    #define HEATER_2_PIN        6
   #elif MB(AZTEEG_X3_PRO)
     #define HEATER_2_PIN       16
     #define HEATER_3_PIN       17
-    #define HEATER_4_PIN       4
-    #define HEATER_5_PIN       5
-    #define HEATER_6_PIN       6
+    #define HEATER_4_PIN        4
+    #define HEATER_5_PIN        5
+    #define HEATER_6_PIN        6
     #define HEATER_7_PIN       11
   #else
     #define HEATER_2_PIN       -1
@@ -713,8 +850,8 @@
     #define TEMP_2_PIN         12   // ANALOG NUMBERING
     #define TEMP_3_PIN         11   // ANALOG NUMBERING
     #define TEMP_4_PIN         10   // ANALOG NUMBERING
-    #define TC1                4    // ANALOG NUMBERING Thermo couple on Azteeg X3Pro
-    #define TC2                5    // ANALOG NUMBERING Thermo couple on Azteeg X3Pro
+    #define TC1                 4   // ANALOG NUMBERING Thermo couple on Azteeg X3Pro
+    #define TC2                 5   // ANALOG NUMBERING Thermo couple on Azteeg X3Pro
   #else
     #define TEMP_2_PIN         -1   // ANALOG NUMBERING
   #endif
@@ -732,18 +869,18 @@
   #define TEMP_BED_PIN       14   // ANALOG NUMBERING
 
   #ifdef NUM_SERVOS
-    #define SERVO0_PIN         11
+    #define SERVO0_PIN        4//11
 
     #if NUM_SERVOS > 1
-      #define SERVO1_PIN         6
+      #define SERVO1_PIN      5//6
     #endif
 
     #if NUM_SERVOS > 2
-      #define SERVO2_PIN         5
+      #define SERVO2_PIN      6//5
     #endif
 
     #if NUM_SERVOS > 3
-      #define SERVO3_PIN         4
+      #define SERVO3_PIN     11///4
     #endif
   #endif
 
@@ -771,8 +908,8 @@
       #ifdef REPRAP_DISCOUNT_SMART_CONTROLLER
         #define BEEPER 37
 
-        #define BTN_EN1 31
-        #define BTN_EN2 33
+        #define BTN_EN1 33//31
+        #define BTN_EN2 31//33
         #define BTN_ENC 35
 
         #define SDCARDDETECT 49
@@ -805,15 +942,15 @@
           #define BTN_EN1 37
           #define BTN_EN2 35
           #define BTN_ENC 31  //the click
-        #endif
+        #endif //REPRAPWORLD_KEYPAD
 
         #ifdef G3D_PANEL
           #define SDCARDDETECT 49
         #else
           #define SDCARDDETECT -1  // Ramps does not use this port
-        #endif
+        #endif //G3D_PANEL
 
-      #endif
+      #endif //REPRAP_DISCOUNT_SMART_CONTROLLER
 
       #if MB(3DRAG)
         #define BEEPER -1
@@ -830,7 +967,7 @@
        #define BTN_EN2 17
        #define BTN_ENC 23 //the click
 
-    #endif
+    #endif // MB(3DRAG)
     #else //old style panel with shift register
       //arduino pin witch triggers an piezzo beeper
       #define BEEPER 33   //No Beeper added
@@ -848,56 +985,12 @@
       #define LCD_PINS_D5 25
       #define LCD_PINS_D6 27
       #define LCD_PINS_D7 29
-    #endif
+    #endif//NEWPANEL
   #endif //ULTRA_LCD
 
-#else // RAMPS_V_1_1 or RAMPS_V_1_2 as default (BOARD_RAMPS_OLD)
+////#else // RAMPS_V_1_1 or RAMPS_V_1_2 as default (BOARD_RAMPS_OLD)
 
-#define X_STEP_PIN         26
-#define X_DIR_PIN          28
-#define X_ENABLE_PIN       24
-#define X_MIN_PIN           3
-#define X_MAX_PIN          -1    //2
-
-#define Y_STEP_PIN         38
-#define Y_DIR_PIN          40
-#define Y_ENABLE_PIN       36
-#define Y_MIN_PIN          16
-#define Y_MAX_PIN          -1    //17
-
-#define Z_STEP_PIN         44
-#define Z_DIR_PIN          46
-#define Z_ENABLE_PIN       42
-#define Z_MIN_PIN          18
-#define Z_MAX_PIN          -1    //19
-
-#define E0_STEP_PIN         32
-#define E0_DIR_PIN          34
-#define E0_ENABLE_PIN       30
-
-#define SDPOWER            48
-#define SDSS               53
-#define LED_PIN            13
-#define PS_ON_PIN          -1
-#define KILL_PIN           -1
-
-#ifdef RAMPS_V_1_0 // RAMPS_V_1_0
-  #define HEATER_0_PIN     12    // RAMPS 1.0
-  #define HEATER_BED_PIN   -1    // RAMPS 1.0
-  #define FAN_PIN          11    // RAMPS 1.0
-#else // RAMPS_V_1_1 or RAMPS_V_1_2
-  #define HEATER_0_PIN     10    // RAMPS 1.1
-  #define HEATER_BED_PIN    8    // RAMPS 1.1
-  #define FAN_PIN           9    // RAMPS 1.1
 #endif
-#define HEATER_1_PIN        -1
-#define HEATER_2_PIN        -1
-#define TEMP_0_PIN          2    // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!!
-#define TEMP_1_PIN          -1
-#define TEMP_2_PIN          -1
-#define TEMP_BED_PIN        1    // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!!
-
-#endif // RAMPS_13_EFB || RAMPS_13_EEB || RAMPS_13_EFF || 3DRAG
 
 // SPI for Max6675 Thermocouple
 
@@ -943,21 +1036,21 @@
 #define E0_DIR_PIN          12
 #define E0_ENABLE_PIN       -1
 
-#define SDPOWER          -1
-#define SDSS          -1
+#define SDPOWER            -1
+#define SDSS               -1
 #define LED_PIN            -1
 #define FAN_PIN             5
 #define PS_ON_PIN          -1
 #define KILL_PIN           -1
 
 #define HEATER_0_PIN        6
-#define HEATER_1_PIN        -1
-#define HEATER_2_PIN        -1
+#define HEATER_1_PIN       -1
+#define HEATER_2_PIN       -1
 #define TEMP_0_PIN          0    // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!!
-#define TEMP_1_PIN          -1
-#define TEMP_2_PIN          -1
-#define HEATER_BED_PIN      -1
-#define TEMP_BED_PIN        -1
+#define TEMP_1_PIN         -1
+#define TEMP_2_PIN         -1
+#define HEATER_BED_PIN     -1
+#define TEMP_BED_PIN       -1
 
 #endif // DUEMILANOVE_328P
 
@@ -980,14 +1073,14 @@
 #define X_MAX_PIN          -1 //34
 
 #define Y_STEP_PIN         11
-#define Y_DIR_PIN          9
+#define Y_DIR_PIN           9
 #define Y_ENABLE_PIN       12
 #define Y_MIN_PIN          33
 #define Y_MAX_PIN          -1 //32
 
-#define Z_STEP_PIN         7
-#define Z_DIR_PIN          6
-#define Z_ENABLE_PIN       8
+#define Z_STEP_PIN          7
+#define Z_DIR_PIN           6
+#define Z_ENABLE_PIN        8
 #define Z_MIN_PIN          31
 #define Z_MAX_PIN          -1 //30
 
@@ -1015,10 +1108,10 @@
 #define HEATER_1_PIN       46 //12V PWM2
 #define HEATER_2_PIN       17 //12V PWM3
 #define HEATER_BED_PIN     44 //DOUBLE 12V PWM
-#define TEMP_0_PIN         3  //ANALOG NUMBERING
-#define TEMP_1_PIN         2  //ANALOG NUMBERING
-#define TEMP_2_PIN         1  //ANALOG NUMBERING
-#define TEMP_BED_PIN       0  //ANALOG NUMBERING
+#define TEMP_0_PIN          3  //ANALOG NUMBERING
+#define TEMP_1_PIN          2  //ANALOG NUMBERING
+#define TEMP_2_PIN          1  //ANALOG NUMBERING
+#define TEMP_BED_PIN        0  //ANALOG NUMBERING
 
 #define BEEPER             36
 
@@ -1037,9 +1130,9 @@
   #define BTN_EN2          39
   #define BTN_ENC          15  //the click
 
-  #define BLEN_C           2
-  #define BLEN_B           1
-  #define BLEN_A           0
+  #define BLEN_C            2
+  #define BLEN_B            1
+  #define BLEN_A            0
 
   //encoder rotation values
   #define encrot0          0
@@ -1121,7 +1214,7 @@
     #define E0_STEP_PIN      4    //Edited @ EJE Electronics 20100715
     #define E0_DIR_PIN       2    //Edited @ EJE Electronics 20100715
     #define E0_ENABLE_PIN    3    //Added @ EJE Electronics 20100715
-    #define TEMP_0_PIN      5     //changed @ rkoeppl 20110410
+    #define TEMP_0_PIN       5     //changed @ rkoeppl 20110410
     #define TEMP_1_PIN      -1    //changed @ rkoeppl 20110410
 
 
@@ -1136,8 +1229,8 @@
     #define HEATER_BED_PIN   1    //changed @ rkoeppl 20110410
     #define TEMP_BED_PIN     0    //changed @ rkoeppl 20110410
     #endif
-    #define SDPOWER          -1
-    #define SDSS          17
+    #define SDPOWER         -1
+    #define SDSS            17
     #define LED_PIN         -1    //changed @ rkoeppl 20110410
     #define FAN_PIN         -1    //changed @ rkoeppl 20110410
     #define PS_ON_PIN       -1    //changed @ rkoeppl 20110410
@@ -1191,8 +1284,8 @@
 #define Y_DIR_PIN          23
 #define Y_STOP_PIN         19
 
-#define Z_STEP_PIN         3
-#define Z_DIR_PIN          2
+#define Z_STEP_PIN          3
+#define Z_DIR_PIN           2
 #define Z_STOP_PIN         20
 
 #define E0_STEP_PIN         1
@@ -1206,18 +1299,27 @@
 #endif
 
 #ifdef MELZI
- #define LED_PIN            27 /* On some broken versions of the Sanguino libraries the pin definitions are wrong, which then needs LED_PIN as pin 28. But you better upgrade your Sanguino libraries! See #368. */
- #define FAN_PIN            4 // Works for Panelolu2 too
+  #ifdef FAN_PIN
+    #undef FAN_PIN
+  #endif
+  #define LED_PIN           -1//27 /* On some broken versions of the Sanguino libraries the pin definitions are wrong, which then needs LED_PIN as pin 28. But you better upgrade your Sanguino libraries! See #368. */
+  #define FAN_PIN            4 // Works for Panelolu2 too
 #endif
 
 #ifdef STB
- #define FAN_PIN            4
+  #ifdef FAN_PIN
+    #undef FAN_PIN
+  #endif
+  #define FAN_PIN            4
   //  Uncomment this if you have the first generation (V1.10) of STBs board
- #define LCD_PIN_BL         17 // LCD backlight LED
+  #define LCD_PIN_BL        17 // LCD backlight LED
 #endif
 
 #ifdef AZTEEG_X1
- #define FAN_PIN            4
+  #ifdef FAN_PIN
+    #undef FAN_PIN
+  #endif
+  #define FAN_PIN            4
 #endif
 
 #ifdef NUM_SERVOS
@@ -1252,12 +1354,12 @@
  #define E0_ENABLE_PIN      14
 
  #ifdef LCD_I2C_PANELOLU2
-   #define FAN_PIN          4 // Uses Transistor1 (PWM) on Panelolu2's Sanguino Adapter Board to drive the fan
+   #define FAN_PIN           4 // Uses Transistor1 (PWM) on Panelolu2's Sanguino Adapter Board to drive the fan
  #endif
 
 #else
 
-#define HEATER_BED_PIN      14  // (bed)
+#define HEATER_BED_PIN     14  // (bed)
 #define X_ENABLE_PIN       -1
 #define Y_ENABLE_PIN       -1
 #define Z_ENABLE_PIN       -1
@@ -1273,7 +1375,7 @@
 #define SDSS               31
 
 /* On some broken versions of the Sanguino libraries the pin definitions are wrong, which then needs SDSS as pin 24. But you better upgrade your Sanguino libraries! See #368. */
-//#define SDSS               24
+//#define SDSS             24
 
  #ifdef ULTRA_LCD
    #ifdef NEWPANEL
@@ -1292,16 +1394,16 @@
        #define LCD_SCREEN_ROT_180
          // #define LCD_SCREEN_ROT_270
        #else // standard Hitachi LCD controller
-       #define LCD_PINS_RS        4
-       #define LCD_PINS_ENABLE    17
-       #define LCD_PINS_D4        30
-       #define LCD_PINS_D5        29
-       #define LCD_PINS_D6        28
-       #define LCD_PINS_D7        27
+       #define LCD_PINS_RS        28//10///4
+       #define LCD_PINS_ENABLE    29//11///17
+       #define LCD_PINS_D4        10//A1///30
+       #define LCD_PINS_D5        11//A2///29
+       #define LCD_PINS_D6        16//A3///28
+       #define LCD_PINS_D7        17//A4///27
      #endif
      //The encoder and click button
-     #define BTN_EN1 11
-     #define BTN_EN2 10
+     #define BTN_EN1 -1//17///11
+     #define BTN_EN2 -1//16///10
      #ifdef LCD_I2C_PANELOLU2
        #ifdef MELZI
          #define BTN_ENC 29 //the click switch
@@ -1310,10 +1412,23 @@
          #define BTN_ENC 30 //the click switch
        #endif
      #else
-       #define BTN_ENC 16  //the click switch
+       #define BTN_ENC -1//6///16  //the click switch
      #endif //Panelolu2
      //not connected to a pin
      #define SDCARDDETECT -1
+
+     #ifdef REPRAPWORLD_KEYPAD
+     #ifdef ADC_KEYPAD
+        #define PINS_ADC_KEY 1 //A1
+     #endif
+        #define BTN_EN1 -1 // encoder dmmy
+        #define BTN_EN2 -1 // encoder dmmy
+        #define BTN_ENC -1 // enter button dmmy
+        #define SHIFT_OUT -1 // shift register dmmy
+        #define SHIFT_CLK -1 // shift register dmmy
+        #define SHIFT_LD -1 // shift register dmmy
+     #endif
+
 
    #endif //Newpanel
  #endif //Ultipanel
@@ -1398,7 +1513,7 @@
 #define SDPOWER            -1
 #define SDSS               53
 #define LED_PIN            13
-#define FAN_PIN            7
+#define FAN_PIN             7
 #define PS_ON_PIN          12
 #define KILL_PIN           -1
 #define SUICIDE_PIN        54  //PIN that has to be turned on right after start, to keep power flowing.
@@ -1563,8 +1678,8 @@
 
 #define SDPOWER            -1
 #define SDSS               53
-#define LED_PIN            8
-#define FAN_PIN            7
+#define LED_PIN             8
+#define FAN_PIN             7
 #define PS_ON_PIN          -1
 #define KILL_PIN           -1
 #define SUICIDE_PIN        -1  //PIN that has to be turned on right after start, to keep power flowing.
@@ -1644,7 +1759,7 @@
 
 #define LED_PIN            13
 
-#define FAN_PIN            7
+#define FAN_PIN             7
 //additional FAN1 PIN (e.g. useful for electronics fan or light on/off) on PIN 8
 
 #define PS_ON_PIN          45
@@ -1654,9 +1769,9 @@
  #define TEMP_0_PIN         -1
  #define HEATER_0_PIN       -1
 #else
- #define HEATER_0_PIN        2    // EXTRUDER 1
+ #define HEATER_0_PIN         2    // EXTRUDER 1
  #if (TEMP_SENSOR_0==-1)
-  #define TEMP_0_PIN         6    // ANALOG NUMBERING - connector *K1* on RUMBA thermocouple ADD ON is used
+  #define TEMP_0_PIN          6    // ANALOG NUMBERING - connector *K1* on RUMBA thermocouple ADD ON is used
  #else
   #define TEMP_0_PIN         15   // ANALOG NUMBERING - default connector for thermistor *T0* on rumba board is used
  #endif
@@ -1670,7 +1785,7 @@
  #if (TEMP_SENSOR_1==-1)
   #define TEMP_1_PIN         5    // ANALOG NUMBERING - connector *K2* on RUMBA thermocouple ADD ON is used
  #else
-  #define TEMP_1_PIN         14   // ANALOG NUMBERING - default connector for thermistor *T1* on rumba board is used
+  #define TEMP_1_PIN        14   // ANALOG NUMBERING - default connector for thermistor *T1* on rumba board is used
  #endif
 #endif
 
@@ -1697,7 +1812,7 @@
  #if (TEMP_SENSOR_BED==-1)
   #define TEMP_BED_PIN       7    // ANALOG NUMBERING - connector *K3* on RUMBA thermocouple ADD ON is used <-- this can not be used when TEMP_SENSOR_2 is defined as thermocouple
  #else
-  #define TEMP_BED_PIN       11   // ANALOG NUMBERING - default connector for thermistor *THB* on rumba board is used
+  #define TEMP_BED_PIN      11   // ANALOG NUMBERING - default connector for thermistor *THB* on rumba board is used
  #endif
 #endif
 
@@ -1881,20 +1996,20 @@
 #define LARGE_FLASH        true
 
 
-#define X_STEP_PIN         0
-#define X_DIR_PIN          1
+#define X_STEP_PIN          0
+#define X_DIR_PIN           1
 #define X_ENABLE_PIN       39
 
-#define Y_STEP_PIN         2
-#define Y_DIR_PIN          3
+#define Y_STEP_PIN          2
+#define Y_DIR_PIN           3
 #define Y_ENABLE_PIN       38
 
-#define Z_STEP_PIN         4
-#define Z_DIR_PIN          5
+#define Z_STEP_PIN          4
+#define Z_DIR_PIN           5
 #define Z_ENABLE_PIN       23
 
-#define E0_STEP_PIN         6
-#define E0_DIR_PIN          7
+#define E0_STEP_PIN          6
+#define E0_DIR_PIN           7
 #define E0_ENABLE_PIN       19
 
 #define HEATER_0_PIN       21  // Extruder
@@ -1925,7 +2040,7 @@
 
 #ifndef SDSUPPORT
    // these pins are defined in the SD library if building with SD support
-  #define SCK_PIN          9
+  #define SCK_PIN           9
   #define MISO_PIN         11
   #define MOSI_PIN         10
 #endif
@@ -1948,7 +2063,7 @@
 #define BTN_ENC            12
 
 #define KILL_PIN           42 // A2 = 42 - teensy = 40
-#define HOME_PIN          -1 // A4 = marlin 44 - teensy = 42
+#define HOME_PIN           -1 // A4 = marlin 44 - teensy = 42
 
 #ifdef NUM_SERVOS
   #define SERVO0_PIN       41 // In teensy's pin definition for pinMode (in Servo.cpp)
@@ -1964,7 +2079,7 @@
   http://www.pjrc.com/teensy/teensyduino.html
 * See http://reprap.org/wiki/Printrboard for more info
 * CLI build: DEFINES=AT90USBxx_TEENSYPP_ASSIGNMENTS HARDWARE_MOTHERBOARD=84  make
-* 
+*
 ****************************************************************************************/
 #if MB(TEENSY2)
 #define KNOWN_BOARD 1
@@ -1976,37 +2091,37 @@
 
 #define LARGE_FLASH        true
 
-/* 
+/*
 DaveX plan for Teensylu/printrboard-type pinouts (ref teensylu & sprinter) for a TeensyBreadboard:
 
                                USB
            GND       GND |-----#####-----| +5V              ATX +5SB
-     ATX PS_ON    PWM 27 |b7   #####   b6| 26    PWM*       Stepper Enable 
-                  PWM  0 |d0           b5| 25    PWM*        
-                  PWM  1 |d1           b4| 24    PWM        
+     ATX PS_ON    PWM 27 |b7   #####   b6| 26    PWM*       Stepper Enable
+                  PWM  0 |d0           b5| 25    PWM*
+                  PWM  1 |d1           b4| 24    PWM
          X_MIN         2 |d2           b3| 23               MISO_PIN
          Y_MIN         3 |d3           b2| 22               MOSI_PIN
-         Z_MIN         4 |d4  * *      b1| 21               SCK_PIN       
-                       5 |d5  e e      b0| 20               SDSS              
-                LED    6 |d6  5 4      e7| 19               
-                       7 |d7           e6| 18               
-       LCD  RS         8 |e0             | GND              
-       LCD  EN         9 |e1   a4 a0    R| AREF             
-       LCD  D4        10 |c0   a5 a1   f0| 38 A0            ENC_1           
+         Z_MIN         4 |d4  * *      b1| 21               SCK_PIN
+                       5 |d5  e e      b0| 20               SDSS
+                LED    6 |d6  5 4      e7| 19
+                       7 |d7           e6| 18
+       LCD  RS         8 |e0             | GND
+       LCD  EN         9 |e1   a4 a0    R| AREF
+       LCD  D4        10 |c0   a5 a1   f0| 38 A0            ENC_1
        LCD  D5        11 |c1   a6 a2   f1| 39 A1            ENC_2
        LCD  D6        12 |c2   a7 a3   f2| 40 A2            ENC_CLK
-       LCD  D6        13 |c3           f3| 41 A3            
-      Bed Heat    PWM 14 |c4   V G R   f4| 42 A4            
- Extruder Heat    PWM 15 |c5   c n S   f5| 43 A5            
+       LCD  D6        13 |c3           f3| 41 A3
+      Bed Heat    PWM 14 |c4   V G R   f4| 42 A4
+ Extruder Heat    PWM 15 |c5   c n S   f5| 43 A5
            Fan    PWM 16 |c6   c d T   f6| 44 A6            Bed TC
-                      17 |c7   * * *   f7| 45 A7            Extruder TC * 4.7k * +5        
-                         -----------------                  
+                      17 |c7   * * *   f7| 45 A7            Extruder TC * 4.7k * +5
+                         -----------------
 
       Interior E4: 36, INT4
       Interior E5: 37, INT5
       Interior PA0-7: 28-35  -- Printrboard and Teensylu use these pins for step & direction:
              T++ PA Signal  Marlin
-    
+
        Z STEP  32 a4  a0 28 X STEP
        Z DIR   33 a5  a1 29 X DIR
        E STEP  34 a6  a2 30 Y STEP
@@ -2021,7 +2136,7 @@ DaveX plan for Teensylu/printrboard-type pinouts (ref teensylu & sprinter) for a
 
 #define X_STEP_PIN         28 //  0 Marlin
 #define X_DIR_PIN          29 //  1 Marlin
-#define X_ENABLE_PIN       26 
+#define X_ENABLE_PIN       26
 
 #define Y_STEP_PIN         30 //  2 Marlin
 #define Y_DIR_PIN          31 //  3
@@ -2051,7 +2166,7 @@ DaveX plan for Teensylu/printrboard-type pinouts (ref teensylu & sprinter) for a
 #define TEMP_2_PIN         -1
 
 #define SDPOWER            -1
-#define SDCARDDETECT       -1   
+#define SDCARDDETECT       -1
 #define SDSS               20 // 8
 #define LED_PIN             6
 #define PS_ON_PIN          27
@@ -2112,7 +2227,7 @@ DaveX plan for Teensylu/printrboard-type pinouts (ref teensylu & sprinter) for a
 
 #define FAN_PIN            -1
 
-#define PS_ON_PIN         14
+#define PS_ON_PIN          14
 #define KILL_PIN           -1
 
 #define HEATER_0_PIN       12 // (extruder)
@@ -2124,11 +2239,11 @@ DaveX plan for Teensylu/printrboard-type pinouts (ref teensylu & sprinter) for a
 #define E0_ENABLE_PIN      13
 
 #define TEMP_0_PIN          0   // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!! (pin 33 extruder)
-#define TEMP_1_PIN         -1   
+#define TEMP_1_PIN         -1
 #define TEMP_2_PIN         -1
-#define TEMP_BED_PIN        5   // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!! (pin 34 bed)  
+#define TEMP_BED_PIN        5   // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!! (pin 34 bed)
 #define SDPOWER            -1
-#define SDSS               4
+#define SDSS                4
 #define HEATER_2_PIN       -1
 
 #endif // GEN3_PLUS
@@ -2173,7 +2288,7 @@ DaveX plan for Teensylu/printrboard-type pinouts (ref teensylu & sprinter) for a
 //extruder pins
 #define E0_STEP_PIN         12
 #define E0_DIR_PIN          17
-#define E0_ENABLE_PIN       3
+#define E0_ENABLE_PIN        3
 
 #define HEATER_0_PIN 16
 #define TEMP_0_PIN 0
@@ -2239,17 +2354,17 @@ DaveX plan for Teensylu/printrboard-type pinouts (ref teensylu & sprinter) for a
 #define X_STEP_PIN         21
 #define X_DIR_PIN          20
 #define X_ENABLE_PIN       24
-#define X_STOP_PIN         0
+#define X_STOP_PIN          0
 
 #define Y_STEP_PIN         23
 #define Y_DIR_PIN          22
 #define Y_ENABLE_PIN       24
-#define Y_STOP_PIN         1
+#define Y_STOP_PIN          1
 
 #define Z_STEP_PIN         26
 #define Z_DIR_PIN          25
 #define Z_ENABLE_PIN       24
-#define Z_STOP_PIN         2
+#define Z_STOP_PIN          2
 
 #define E0_STEP_PIN         28
 #define E0_DIR_PIN          27
@@ -2267,11 +2382,11 @@ DaveX plan for Teensylu/printrboard-type pinouts (ref teensylu & sprinter) for a
 #define SDSS               11
 #define SDCARDDETECT       -1 // 10 optional also used as mode pin
 #define LED_PIN            -1
-#define FAN_PIN            3
+#define FAN_PIN             3
 #define PS_ON_PIN          -1
 #define KILL_PIN           -1
 
-#define HEATER_0_PIN       4
+#define HEATER_0_PIN        4
 #define HEATER_1_PIN       -1 // 12
 #define HEATER_2_PIN       -1 // 13
 #define TEMP_0_PIN          0 //D27   // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!!
@@ -2293,17 +2408,17 @@ DaveX plan for Teensylu/printrboard-type pinouts (ref teensylu & sprinter) for a
 #define X_STEP_PIN         26
 #define X_DIR_PIN          25
 #define X_ENABLE_PIN       10
-#define X_STOP_PIN         0
+#define X_STOP_PIN          0
 
 #define Y_STEP_PIN         28
 #define Y_DIR_PIN          27
 #define Y_ENABLE_PIN       10
-#define Y_STOP_PIN         1
+#define Y_STOP_PIN          1
 
 #define Z_STEP_PIN         23
 #define Z_DIR_PIN          22
 #define Z_ENABLE_PIN       10
-#define Z_STOP_PIN         2
+#define Z_STOP_PIN          2
 
 #define E0_STEP_PIN         24
 #define E0_DIR_PIN          21
@@ -2315,7 +2430,7 @@ DaveX plan for Teensylu/printrboard-type pinouts (ref teensylu & sprinter) for a
 #define __GS  18
 #define __GD  13
 
-#define UNUSED_PWM           14 /* PWM on LEFT connector */
+#define UNUSED_PWM          14 /* PWM on LEFT connector */
 
 #define E1_STEP_PIN         -1 // 21
 #define E1_DIR_PIN          -1 // 20
@@ -2418,8 +2533,8 @@ DaveX plan for Teensylu/printrboard-type pinouts (ref teensylu & sprinter) for a
 #define SDPOWER            -1
 #define SDSS               53
 #define LED_PIN            13
-#define FAN_PIN            8
-#define PS_ON_PIN          4
+#define FAN_PIN             8
+#define PS_ON_PIN           4
 #define KILL_PIN           -1 //80 with Smart Controller LCD
 #define SUICIDE_PIN        -1  //PIN that has to be turned on right after start, to keep power flowing.
 
@@ -2488,8 +2603,10 @@ DaveX plan for Teensylu/printrboard-type pinouts (ref teensylu & sprinter) for a
 #endif //ULTRA_LCD
 
 #ifdef FILAMENT_SENSOR
-  //Filip added pin for Filament sensor analog input 
-  #define FILWIDTH_PIN        3
+  //Filip added pin for Filament sensor analog input
+  //// #define FILWIDTH_PIN        3
+  //// ^^^^ MOST LIKELY, FILAMENT_SENSOR CANT BE SUPPORTED BY THIS PRINTER
+  ////      BECAUSE FILWIDTH_PIN == PINS_ADC_KEY == 3 --> ARE OVERLAPPING!
 #endif //FILAMENT_SENSOR
 
 #endif // RAMBO
@@ -2540,13 +2657,13 @@ DaveX plan for Teensylu/printrboard-type pinouts (ref teensylu & sprinter) for a
 #define LED_PIN            13
 
 
-#define FAN_PIN            7 // IO pin. Buffer needed
+#define FAN_PIN             7 // IO pin. Buffer needed
 #define PS_ON_PIN          12
 #define KILL_PIN           -1
 
 #define HEATER_0_PIN       9    // EXTRUDER 1
 #define HEATER_1_PIN       8    // EXTRUDER 2 (FAN On Sprinter)
-#define HEATER_2_PIN       -1
+#define HEATER_2_PIN      -1
 
 #if TEMP_SENSOR_0 == -1
 #define TEMP_0_PIN         8   // ANALOG NUMBERING
@@ -2625,8 +2742,8 @@ DaveX plan for Teensylu/printrboard-type pinouts (ref teensylu & sprinter) for a
  #define Z_STEP_PIN 56 // A2
  #define Z_DIR_PIN 60 // A6
  #define Z_ENABLE_PIN 55 // A1
- #define Z_MIN_PIN 18
- #define Z_MAX_PIN 19
+ #define Z_MIN_PIN 19//18
+ #define Z_MAX_PIN 18//19
 
  #define E0_STEP_PIN 35
  #define E0_DIR_PIN 36
@@ -2636,21 +2753,26 @@ DaveX plan for Teensylu/printrboard-type pinouts (ref teensylu & sprinter) for a
  #define E1_DIR_PIN 39
  #define E1_ENABLE_PIN 28
 
- #define E2_STEP_PIN 23
- #define E2_DIR_PIN 24
+ #define E2_STEP_PIN 24//23
+ #define E2_DIR_PIN 23//24
  #define E2_ENABLE_PIN 22
 
- #define SDPOWER -1
+ #define Y2_STEP_PIN 24
+ #define Y2_DIR_PIN 23
+ #define Y2_ENABLE_PIN 22
+
+ #define SDPOWER 11//-1
  #define SDSS 53
- #define LED_PIN 13
+ #define LED_PIN -1//2//13
+ #define CASE_LIGHT_PIN 8
 
  #define FAN_PIN 7
  #define FAN2_PIN 6
- #define PS_ON_PIN 12
+ #define PS_ON_PIN -1//12
  #define KILL_PIN -1
 
  #define HEATER_0_PIN 9 // EXTRUDER 1
- #define HEATER_1_PIN 8 // EXTRUDER 2
+ #define HEATER_1_PIN -1//8 // EXTRUDER 2
  #define HEATER_2_PIN -1
 
  #if TEMP_SENSOR_0 == -1
@@ -2678,13 +2800,14 @@ DaveX plan for Teensylu/printrboard-type pinouts (ref teensylu & sprinter) for a
 
  #define BEEPER 64
 
+ #define PINS_ADC_KEY 3 //A3
 
- #define LCD_PINS_RS 14
+ #define LCD_PINS_RS     14
  #define LCD_PINS_ENABLE 15
- #define LCD_PINS_D4 30
- #define LCD_PINS_D5 31
- #define LCD_PINS_D6 32
- #define LCD_PINS_D7 33
+ #define LCD_PINS_D4     30
+ #define LCD_PINS_D5     31
+ #define LCD_PINS_D6     32
+ #define LCD_PINS_D7     33
 
 
  //buttons are directly attached using keypad
@@ -2696,7 +2819,7 @@ DaveX plan for Teensylu/printrboard-type pinouts (ref teensylu & sprinter) for a
  #define BLEN_B 1
  #define BLEN_A 0
 
- #define SDCARDDETECT -1  // Megatronics does not use this port
+ #define SDCARDDETECT 13//-1  // Megatronics does not use this port
 
    //encoder rotation values
  #define encrot0 0
@@ -2760,13 +2883,13 @@ DaveX plan for Teensylu/printrboard-type pinouts (ref teensylu & sprinter) for a
  #define PS_ON_PIN -1
  #define KILL_PIN -1
 
- #define HEATER_0_PIN 7 // EXTRUDER 1
- #define HEATER_1_PIN 8 // EXTRUDER 2
+ #define HEATER_0_PIN  7 // EXTRUDER 1
+ #define HEATER_1_PIN  8 // EXTRUDER 2
  #define HEATER_2_PIN -1
 
 
- #define TEMP_0_PIN 7 // ANALOG NUMBERING
- #define TEMP_1_PIN 6 // ANALOG NUMBERING
+ #define TEMP_0_PIN  7 // ANALOG NUMBERING
+ #define TEMP_1_PIN  6 // ANALOG NUMBERING
  #define TEMP_2_PIN -1 // ANALOG NUMBERING
 
  #define HEATER_BED_PIN 3 // BED

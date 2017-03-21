@@ -1,4 +1,4 @@
-# Marlin 3D Printer Firmware
+# Marlin 1.0.2-2 firmware for P802YA 8th generation 3D Printer
 <img align="right" src="Documentation/Logo/Marlin%20Logo%20GitHub.png" />
 
  Additional documentation can be found in [our wiki](https://github.com/MarlinFirmware/Marlin/wiki/Main-Page).

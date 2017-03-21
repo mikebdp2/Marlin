@@ -13,17 +13,21 @@
   void lcd_reset_alert_level();
   bool lcd_detected(void);
 
+#ifdef ADC_KEYPAD
+  unsigned char get_ADC_keyValue(void);
+#endif
+
 #ifdef DOGLCD
   extern int lcd_contrast;
   void lcd_setcontrast(uint8_t value);
 #endif
 
-  static unsigned char blink = 0;	// Variable for visualization of fan rotation in GLCD
+  static unsigned char blink = 0;    // Variable for visualization of fan rotation in GLCD
 
   #define LCD_MESSAGEPGM(x) lcd_setstatuspgm(PSTR(x))
   #define LCD_ALERTMESSAGEPGM(x) lcd_setalertstatuspgm(PSTR(x))
 
-  #define LCD_UPDATE_INTERVAL 100
+  #define LCD_UPDATE_INTERVAL   100
   #define LCD_TIMEOUT_TO_STATUS 15000
 
   #ifdef ULTIPANEL
@@ -43,13 +47,13 @@
   extern int absPreheatHotendTemp;
   extern int absPreheatHPBTemp;
   extern int absPreheatFanSpeed;
-  
+
   extern bool cancel_heatup;
-  
+
   #ifdef FILAMENT_LCD_DISPLAY
         extern unsigned long message_millis;
   #endif
-    
+
   void lcd_buzz(long duration,uint16_t freq);
   bool lcd_clicked();
 
@@ -60,26 +64,7 @@
     #define EN_B (1<<BLEN_B)
     #define EN_A (1<<BLEN_A)
 
-    #define LCD_CLICKED (buttons&EN_C)
-    #ifdef REPRAPWORLD_KEYPAD
-  	  #define EN_REPRAPWORLD_KEYPAD_F3 (1<<BLEN_REPRAPWORLD_KEYPAD_F3)
-  	  #define EN_REPRAPWORLD_KEYPAD_F2 (1<<BLEN_REPRAPWORLD_KEYPAD_F2)
-  	  #define EN_REPRAPWORLD_KEYPAD_F1 (1<<BLEN_REPRAPWORLD_KEYPAD_F1)
-  	  #define EN_REPRAPWORLD_KEYPAD_UP (1<<BLEN_REPRAPWORLD_KEYPAD_UP)
-  	  #define EN_REPRAPWORLD_KEYPAD_RIGHT (1<<BLEN_REPRAPWORLD_KEYPAD_RIGHT)
-  	  #define EN_REPRAPWORLD_KEYPAD_MIDDLE (1<<BLEN_REPRAPWORLD_KEYPAD_MIDDLE)
-  	  #define EN_REPRAPWORLD_KEYPAD_DOWN (1<<BLEN_REPRAPWORLD_KEYPAD_DOWN)
-  	  #define EN_REPRAPWORLD_KEYPAD_LEFT (1<<BLEN_REPRAPWORLD_KEYPAD_LEFT)
-
-  	  #define LCD_CLICKED ((buttons&EN_C) || (buttons_reprapworld_keypad&EN_REPRAPWORLD_KEYPAD_F1))
-  	  #define REPRAPWORLD_KEYPAD_MOVE_Z_UP (buttons_reprapworld_keypad&EN_REPRAPWORLD_KEYPAD_F2)
-  	  #define REPRAPWORLD_KEYPAD_MOVE_Z_DOWN (buttons_reprapworld_keypad&EN_REPRAPWORLD_KEYPAD_F3)
-  	  #define REPRAPWORLD_KEYPAD_MOVE_X_LEFT (buttons_reprapworld_keypad&EN_REPRAPWORLD_KEYPAD_LEFT)
-  	  #define REPRAPWORLD_KEYPAD_MOVE_X_RIGHT (buttons_reprapworld_keypad&EN_REPRAPWORLD_KEYPAD_RIGHT)
-  	  #define REPRAPWORLD_KEYPAD_MOVE_Y_DOWN (buttons_reprapworld_keypad&EN_REPRAPWORLD_KEYPAD_DOWN)
-  	  #define REPRAPWORLD_KEYPAD_MOVE_Y_UP (buttons_reprapworld_keypad&EN_REPRAPWORLD_KEYPAD_UP)
-  	  #define REPRAPWORLD_KEYPAD_MOVE_HOME (buttons_reprapworld_keypad&EN_REPRAPWORLD_KEYPAD_MIDDLE)
-    #endif //REPRAPWORLD_KEYPAD
+    //#define LCD_CLICKED (buttons&EN_C)
   #else
     //atomic, do not change
     #define B_LE (1<<BL_LE)
@@ -90,7 +75,7 @@
     #define B_ST (1<<BL_ST)
     #define EN_B (1<<BLEN_B)
     #define EN_A (1<<BLEN_A)
-    
+
     #define LCD_CLICKED ((buttons&B_MI)||(buttons&B_ST))
   #endif//NEWPANEL
 
@@ -103,8 +88,8 @@
   FORCE_INLINE void lcd_buzz(long duration,uint16_t freq) {}
   FORCE_INLINE bool lcd_detected(void) { return true; }
 
-  #define LCD_MESSAGEPGM(x) 
-  #define LCD_ALERTMESSAGEPGM(x) 
+  #define LCD_MESSAGEPGM(x)
+  #define LCD_ALERTMESSAGEPGM(x)
 
 #endif //ULTRA_LCD
 
@@ -119,7 +104,7 @@ char *ftostr31ns(const float &x); // float to string without sign character
 char *ftostr31(const float &x);
 char *ftostr32(const float &x);
 char *ftostr43(const float &x);
-char *ftostr12ns(const float &x); 
+char *ftostr12ns(const float &x);
 char *ftostr32sp(const float &x); // remove zero-padding from ftostr32
 char *ftostr5(const float &x);
 char *ftostr51(const float &x);
